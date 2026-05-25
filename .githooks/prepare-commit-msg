@@ -1,0 +1,27 @@
+#!/bin/sh
+# Plantilla en español para mensajes de commit.
+# Añade una estructura guía si el mensaje está vacío o no contiene la plantilla.
+
+MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# No modificar mensajes de merge o squash generados automáticamente
+if [ "$COMMIT_SOURCE" = "merge" ] || [ "$COMMIT_SOURCE" = "squash" ]; then
+  exit 0
+fi
+
+# Si el mensaje ya contiene la plantilla en español, salir
+if grep -qE "Resumen breve en español|Descripción:|- Cambios:|- Por qué:" "$MSG_FILE"; then
+  exit 0
+fi
+
+# Añadir plantilla al final del mensaje (si está vacío o no tiene contenido útil)
+cat <<'EOF' >> "$MSG_FILE"
+
+Resumen breve en español (una línea):
+Descripción:
+- Cambios: (qué se cambió)
+- Por qué: (motivo/beneficio de este cambio)
+EOF
+
+exit 0

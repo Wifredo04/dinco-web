@@ -1,0 +1,17 @@
+#!/bin/sh
+# Valida que el mensaje de commit incluya español básico y explicación de cambios.
+
+MSG_FILE="$1"
+
+# Buscar caracteres típicos en español o palabras claves en español
+if grep -qE "[áéíóúñÁÉÍÓÚÑ¿¡]" "$MSG_FILE" || grep -qE "(Resumen|Resumen breve|Descripción|Cambios|Por qué|actualiz|arregl|correcci[oó]n|mejoras|fijo|fixo|ajuste)" "$MSG_FILE"; then
+  exit 0
+else
+  echo "ERROR: El mensaje de commit debe estar en español y especificar qué se cambió y por qué." >&2
+  echo "Usa la plantilla que se agregó automáticamente. Ejemplo:" >&2
+  echo "Resumen breve en español (una línea)" >&2
+  echo "Descripción:" >&2
+  echo "- Cambios: ..." >&2
+  echo "- Por qué: ..." >&2
+  exit 1
+fi
