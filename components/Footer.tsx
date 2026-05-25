@@ -59,7 +59,7 @@ export default function Footer() {
           <div>
             <h4 className="font-black text-lg mb-6">Propiedades</h4>
             <ul className="space-y-3">
-              {['Venta', 'Renta', 'Promoción', 'Proyectos nuevos', 'Propiedades destacadas', 'Internacional'].map((item) => (
+              {['Venta', 'Renta', 'Promoción', 'Proyectos nuevos', 'Propiedades destacadas', 'Blog', 'Internacional'].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-white/60 hover:text-[#FF2A39] text-sm transition-colors duration-200">
                     {item}
