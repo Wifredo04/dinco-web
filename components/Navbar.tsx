@@ -32,7 +32,7 @@ export default function Navbar() {
             alt="DINCO Inmobiliaria"
             width={220}
             height={60}
-            className="h-auto w-[220px]"
+            className="h-auto w-220px"
           />
         </Link>
 
