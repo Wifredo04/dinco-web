@@ -88,7 +88,7 @@ export default function Testimonios() {
             <div className="flex flex-col md:flex-row gap-8 items-center">
 
               {/* FOTO */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <div
                   className="w-24 h-24 rounded-full bg-cover bg-center border-4 border-[#0056B3]"
                   style={{ backgroundImage: `url(${testimonios[actual].foto})` }}

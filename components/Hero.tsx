@@ -42,7 +42,6 @@ const regiones = [
 
 export default function Hero() {
   const [actual, setActual] = useState(0)
-  const [prevIndex, setPrevIndex] = useState(0)
   const [animando, setAnimando] = useState(false)
 
   useEffect(() => {
@@ -54,32 +53,25 @@ export default function Hero() {
 
   const cambiarRegion = (indice: number) => {
     if (animando || indice === actual) return
-    setPrevIndex(actual)
-    setActual(indice)
     setAnimando(true)
     setTimeout(() => {
+      setActual(indice)
       setAnimando(false)
-    }, 500)
+    }, 400)
   }
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
 
       {/* IMAGEN DE FONDO */}
-      <div className="absolute inset-0">
-        <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${animando ? 'opacity-0' : 'opacity-100'}`}
-          style={{ backgroundImage: `url(${regiones[prevIndex].imagen})` }}
-        />
-        <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${animando ? 'opacity-100' : 'opacity-0'}`}
-          style={{ backgroundImage: `url(${regiones[actual].imagen})` }}
-        />
-      </div>
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+        style={{ backgroundImage: `url(${regiones[actual].imagen})` }}
+      />
 
       {/* CAPAS DE GRADIENTE */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-linearinea-to-t from-black/80 via-black/40 to-black/20" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/40 to-transparent" />
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-6">
