@@ -81,7 +81,7 @@ export default function PuertoPlata() {
         className="relative h-80 bg-cover bg-center flex items-end"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 to-black/20" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-10 w-full">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-2">
             <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
