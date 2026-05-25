@@ -93,13 +93,13 @@ export default function DashboardPropietario() {
                   {propiedades.map((p) => (
                     <div key={p.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
                       <div
-                        className="w-20 h-16 rounded-xl bg-cover bg-center flex-shrink-0"
+                        className="w-20 h-16 rounded-xl bg-cover bg-center shrink-0"
                         style={{ backgroundImage: `url(${p.imagen})` }}
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-black text-gray-900 truncate">{p.titulo}</h3>
-                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full shrink-0 ${
                             p.estado === 'Publicada' ? 'bg-green-100 text-green-700' :
                             p.estado === 'En revisión' ? 'bg-yellow-100 text-yellow-700' :
                             'bg-gray-100 text-gray-600'
@@ -110,7 +110,7 @@ export default function DashboardPropietario() {
                         <p className="text-gray-500 text-sm">{p.region} · {p.tipo} · {p.precio}</p>
                         <p className="text-gray-400 text-xs mt-1">{p.visitas} visitas · {p.consultas} consultas</p>
                       </div>
-                      <div className="flex gap-2 flex-shrink-0">
+                      <div className="flex gap-2 shrink-0">
                         <button className="text-xs bg-white border border-gray-200 hover:border-[#0056B3] hover:text-[#0056B3] text-gray-600 px-3 py-1.5 rounded-xl transition-all duration-200">
                           Editar
                         </button>
@@ -138,13 +138,13 @@ export default function DashboardPropietario() {
                           <div className="flex items-center gap-2 mb-1">
                             <span className="font-black text-gray-900">{c.nombre} {c.pais}</span>
                             {!c.leido && (
-                              <span className="w-2 h-2 bg-[#0056B3] rounded-full flex-shrink-0" />
+                              <span className="w-2 h-2 bg-[#0056B3] rounded-full shrink-0" />
                             )}
                           </div>
                           <p className="text-[#0056B3] text-xs font-semibold mb-1">{c.propiedad}</p>
                           <p className="text-gray-600 text-sm">{c.mensaje}</p>
                         </div>
-                        <div className="text-right flex-shrink-0">
+                        <div className="text-right shrink-0">
                           <p className="text-gray-400 text-xs mb-2">{c.fecha}</p>
                           <button className="text-xs bg-[#0056B3] hover:bg-[#FF2A39] text-white px-3 py-1.5 rounded-xl transition-all duration-200">
                             Responder
