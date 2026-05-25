@@ -11,6 +11,7 @@ Ejemplo de mensaje de commit:
 Resumen breve en español (una línea)
 
 Descripción:
+
 - Cambios: Se modificó `components/Hero.tsx` para corregir un error de hook.
 - Por qué: Evitar warnings de ESLint y mejorar la estabilidad del carousel.
 
