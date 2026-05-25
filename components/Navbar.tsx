@@ -38,7 +38,7 @@ export default function Navbar() {
 
         {/* MENU DESKTOP */}
         <div className="hidden md:flex items-center gap-8 logo-font">
-          {['Propiedades', 'Regiones', 'Agentes', 'Nosotros', 'Contacto'].map((item) => (
+          {['Propiedades', 'Regiones', 'Agentes', 'Nosotros', 'Blog', 'Contacto'].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase()}`}
