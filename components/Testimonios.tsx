@@ -107,7 +107,7 @@ export default function Testimonios() {
                 </div>
 
                 <p className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                  "{testimonios[actual].texto}"
+                  &quot;{testimonios[actual].texto}&quot;
                 </p>
 
                 <div>

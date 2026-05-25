@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
@@ -30,7 +31,7 @@ export default function Footer() {
 
           {/* LOGO Y DESCRIPCIÓN */}
           <div className="lg:col-span-1">
-            <img src="/nuevo_dc.svg" alt="DINCO" className="w-32 mb-4 brightness-0 invert" />
+            <Image src="/nuevo_dc.svg" alt="DINCO" width={128} height={40} className="w-32 mb-4 brightness-0 invert" />
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Inmobiliaria y Constructora con más de 12 años conectando personas con propiedades de ensueño en República Dominicana y el mundo.
             </p>

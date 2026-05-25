@@ -27,11 +27,13 @@ export default function Navbar() {
 
         {/* LOGO */}
         <Link href="/" className="logo-font" aria-label="Inicio - DINCO Inmobiliaria">
-          <img
-           src="/nuevo_dc.svg"
-           alt="DINCO Inmobiliaria"
-           style={{ width: '680px', height: 'auto' }}
-           />
+          <Image
+            src="/nuevo_dc.svg"
+            alt="DINCO Inmobiliaria"
+            width={220}
+            height={60}
+            className="h-auto w-[220px]"
+          />
         </Link>
 
         {/* MENU DESKTOP */}

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const regiones = [
   {
@@ -44,21 +44,21 @@ export default function Hero() {
   const [actual, setActual] = useState(0)
   const [animando, setAnimando] = useState(false)
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      cambiarRegion((actual + 1) % regiones.length)
-    }, 5000)
-    return () => clearInterval(intervalo)
-  }, [actual])
-
-  const cambiarRegion = (indice: number) => {
+  const cambiarRegion = useCallback((indice: number) => {
     if (animando || indice === actual) return
     setAnimando(true)
     setTimeout(() => {
       setActual(indice)
       setAnimando(false)
     }, 400)
-  }
+  }, [actual, animando])
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      cambiarRegion((actual + 1) % regiones.length)
+    }, 5000)
+    return () => clearInterval(intervalo)
+  }, [actual, cambiarRegion])
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
