@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 
 const oficinas = [
   { ciudad: 'Puerto Plata', direccion: 'Av. Circunvalación Norte, Puerto Plata', telefono: '+1 (809) 123-4567', email: 'pplata@dinco.com', horario: 'Lun-Vie 8am-6pm · Sáb 9am-2pm' },

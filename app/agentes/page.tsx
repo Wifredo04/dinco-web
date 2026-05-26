@@ -1,5 +1,5 @@
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 
 const agentes = [
   { id: 1, nombre: 'Carlos Durán', cargo: 'Agente Senior', region: 'Puerto Plata', idiomas: ['Español', 'Inglés'], propiedades: 48, foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', whatsapp: '18091234567', email: 'carlos@dinco.com' },
