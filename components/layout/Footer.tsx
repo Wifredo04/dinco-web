@@ -61,9 +61,11 @@ export default function Footer() {
             <ul className="space-y-3">
               {['Venta', 'Renta', 'Promoción', 'Proyectos nuevos', 'Propiedades destacadas', 'Blog', 'Internacional'].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-white/60 hover:text-[#FF2A39] text-sm transition-colors duration-200">
-                    {item}
-                  </Link>
+                  {['Términos y condiciones', 'Política de privacidad', 'Cookies', 'Login', 'Registro'].map((item) => (
+                  <Link key={item} href={item === 'Login' ? '/login' : item === 'Registro' ? '/registro' : '#'} className="text-white/40 hover:text-white text-xs transition-colors duration-200">
+                  {item}
+                 </Link> ))} 
+                  
                 </li>
               ))}
             </ul>
