@@ -3,29 +3,36 @@
 ## SERVICIOS PRINCIPALES
 
 ### AUTH
-Autenticación y autorización.
+
+Autenticaciï¿½n y autorizaciï¿½n.
 
 ### USERS
-Gestión de usuarios.
+
+Gestiï¿½n de usuarios.
 
 ### PROPERTIES
-Gestión de propiedades.
+
+Gestiï¿½n de propiedades.
 
 ### CRM
-Gestión de clientes y leads.
+
+Gestiï¿½n de clientes y leads.
 
 ### DOCUMENTS
-Gestión documental.
+
+Gestiï¿½n documental.
 
 ### NOTIFICATIONS
+
 Correos y alertas.
 
 ### AI
-Automatización futura.
+
+Automatizaciï¿½n futura.
 
 ## REGLAS
 
-- separar lógica por dominio
+- separar lï¿½gica por dominio
 - validar entradas
-- centralizar autenticación
+- centralizar autenticaciï¿½n
 - evitar dependencias innecesarias
