@@ -1,37 +1,33 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import PresenciaSocial from "@/components/layout/PresenciaSocial";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next'
+import './globals.css'
+import PresenciaSocial from '@/components/layout/PresenciaSocial'
 
 export const metadata: Metadata = {
-  title: "DINCO Inmobiliaria",
-  description: "Plataforma global de venta, renta y promoción de propiedades",
-};
+  title: {
+    default: 'DINCO Inmobiliaria & Constructora',
+    template: '%s | DINCO Inmobiliaria',
+  },
+  description: 'Plataforma global de venta, renta y promoción de propiedades en República Dominicana y el mundo. Más de 12 años de experiencia.',
+  keywords: ['inmobiliaria', 'propiedades', 'Puerto Plata', 'Cabarete', 'Sosúa', 'República Dominicana', 'venta', 'renta'],
+  openGraph: {
+    title: 'DINCO Inmobiliaria & Constructora',
+    description: 'Plataforma global de negocios inmobiliarios',
+    locale: 'es_DO',
+    type: 'website',
+  },
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="es" className="scroll-smooth">
+      <body className="min-h-full flex flex-col antialiased">
         {children}
         <PresenciaSocial />
       </body>
     </html>
-  );
+  )
 }
