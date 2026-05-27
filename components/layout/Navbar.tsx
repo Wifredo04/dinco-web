@@ -30,8 +30,8 @@ export default function Navbar() {
           <Image
             src="/nuevo_dc.svg"
             alt="DINCO Inmobiliaria"
-            width={220}
-            height={60}
+            width={440}
+            height={120}
             className="h-auto w-220px"
           />
         </Link>

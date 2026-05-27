@@ -1,4 +1,4 @@
-import CatalogoRegion from '@/components/CatalogoRegion'
+import CatalogoRegion from '@/components/property/CatalogoRegion'
 
 export default function MonteCristi() {
   return (
