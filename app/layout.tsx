@@ -1,33 +1,27 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import PresenciaSocial from '@/components/layout/PresenciaSocial'
+﻿import './globals.css';
+import { LayoutProvider } from '../context/layoutcontext';
+import Navbar from '@/components/layout/Navbar';
+import ClientWrapper from './ClientWrapper';
 
-export const metadata: Metadata = {
-  title: {
-    default: 'DINCO Inmobiliaria & Constructora',
-    template: '%s | DINCO Inmobiliaria',
-  },
-  description: 'Plataforma global de venta, renta y promoción de propiedades en República Dominicana y el mundo. Más de 12 años de experiencia.',
-  keywords: ['inmobiliaria', 'propiedades', 'Puerto Plata', 'Cabarete', 'Sosúa', 'República Dominicana', 'venta', 'renta'],
-  openGraph: {
-    title: 'DINCO Inmobiliaria & Constructora',
-    description: 'Plataforma global de negocios inmobiliarios',
-    locale: 'es_DO',
-    type: 'website',
-  },
-}
+export const metadata = {
+  title: 'DINCO Inmobiliaria & Constructora | Plataforma Internacional',
+  description: 'Portal inmobiliario exclusivo premium en República Dominicana.',
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <body className="min-h-full flex flex-col antialiased">
-        {children}
-        <PresenciaSocial />
+    <html lang="es">
+      <head>
+        <title>DINCO Inmobiliaria</title>
+      </head>
+      <body className="bg-zinc-950 text-white min-h-screen antialiased">
+        <LayoutProvider>
+          <Navbar />
+          <ClientWrapper>
+            <main className="flex-grow w-full">{children}</main>
+          </ClientWrapper>
+        </LayoutProvider>
       </body>
     </html>
-  )
+  );
 }
