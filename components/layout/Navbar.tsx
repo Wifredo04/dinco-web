@@ -1,112 +1,73 @@
-'use client'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-
-const MENU_ITEMS = [
-  {
-    label: 'Propiedades',
-    href: '/propiedades',
-    submenu: [
-      { label: 'Todas las propiedades', href: '/propiedades' },
-      { label: 'En venta', href: '/propiedades?tipo=venta' },
-      { label: 'En renta', href: '/propiedades?tipo=renta' },
-      { label: 'Proyectos nuevos', href: '/propiedades?tipo=nuevo' },
-    ],
-  },
-  {
-    label: 'Regiones',
-    href: '#',
-    submenu: [
-      { label: 'Puerto Plata', href: '/puerto-plata' },
-      { label: 'Cabarete', href: '/cabarete' },
-      { label: 'Sosúa', href: '/sosua' },
-      { label: 'Santo Domingo', href: '/santo-domingo' },
-      { label: 'Samaná', href: '/samana' },
-      { label: 'Monte Cristi', href: '/monte-cristi' },
-    ],
-  },
-  { label: 'Agentes', href: '/agentes' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Nosotros', href: '/nosotros' },
-  { label: 'Contacto', href: '/contacto' },
-]
+﻿'use client';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useLayout } from '@/context/layoutcontext';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const { dimensiones, cambiarDimensiones } = useLayout();
+
+  const DISPOSITIVOS = [
+    { id: 'pc', nombre: 'PC', w: '100%', h: '100vh', desc: '🖥️ Pantalla Completa' },
+    { id: 'movil', nombre: 'Movil', w: '393px', h: '852px', desc: '📱 iPhone 15 Pro' },
+    { id: 'tablet', nombre: 'Tablet', w: '768px', h: '1024px', desc: '📟 iPad Mini' }
+  ];
+
+  const activoActual = DISPOSITIVOS.find(d => d.desc === dimensiones.nombre) || DISPOSITIVOS[0];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const MENU_ITEMS = [
+    {
+      label: "Regiones",
+      submenu: [
+        { label: "Samaná", href: "/samana" },
+        { label: "Santo Domingo", href: "/santo-domingo" },
+        { label: "Sosúa", href: "/sosua" }
+      ],
+    },
+    { label: "Agentes", href: "/agentes" },
+    { label: "Propietarios", href: "/propietarios" },
+    { label: "Blog", href: "/blog" },
+  ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-black/5 py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      scrolled 
+        ? 'bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-900/40 py-3 px-8 shadow-xl' 
+        : 'bg-black/40 backdrop-blur-md py-5 px-8 border-b border-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center w-full relative">
+        
         {/* LOGO */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <img
-            src="/nuevo_dc.svg"
-            alt="DINCO Inmobiliaria"
-            style={{ width: '160px', height: 'auto' }}
-            className={`transition-all duration-500 ${
-              scrolled ? '' : 'brightness-0 invert'
-            }`}
-          />
+        <Link href="/" className="shrink-0">
+          <Image src="/nuevo_dc.svg" alt="DINCO Inmobiliaria" width={125} height={40} priority className="object-contain w-auto h-auto" />
         </Link>
 
-        {/* MENÚ DESKTOP */}
-        <div className="hidden lg:flex items-center gap-1">
+        {/* MENÚ EN LÍNEA HORIZONTAL PERFECTA */}
+        <div className="hidden lg:flex items-center flex-row gap-6">
           {MENU_ITEMS.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => item.submenu && setActiveSubmenu(item.label)}
-              onMouseLeave={() => setActiveSubmenu(null)}
-            >
-              <Link
-                href={item.href}
-                className={`flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                  scrolled
-                    ? 'text-gray-700 hover:text-[#0056B3] hover:bg-blue-50'
-                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                }`}
-              >
+            <div key={item.label} className="relative" onMouseEnter={() => item.submenu && setActiveSubmenu(item.label)} onMouseLeave={() => setActiveSubmenu(null)}>
+              <Link href={item.href || '#'} className="relative text-[13px] font-semibold tracking-wide py-2 flex items-center gap-1 transition-colors text-white/90 hover:text-amber-500 group">
                 {item.label}
-                {item.submenu && (
-                  <svg
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeSubmenu === item.label ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                  </svg>
-                )}
+                {item.submenu && <span className="text-[8px] opacity-60 transition-transform duration-300 group-hover:rotate-180">▼</span>}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-amber-500 transition-all duration-300 ease-out group-hover:w-full" />
               </Link>
-
-              {/* SUBMENU DROPDOWN */}
               {item.submenu && activeSubmenu === item.label && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden animate-fade-in">
+                <div className="absolute top-full left-0 mt-1 w-44 bg-zinc-950 border border-zinc-800 rounded-xl p-1.5 shadow-2xl z-50 flex flex-col gap-0.5 animate-in fade-in duration-200">
                   {item.submenu.map((sub) => (
-                    <Link
-                      key={sub.label}
-                      href={sub.href}
-                      className="flex items-center gap-3 px-5 py-3.5 text-sm text-gray-700 hover:text-[#0056B3] hover:bg-blue-50 transition-colors duration-150 first:pt-4 last:pb-4"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF2A39] flex-shrink-0" />
+                    <Link key={sub.href} href={sub.href} className="block px-3 py-2 text-xs font-normal text-zinc-300 hover:text-white hover:bg-zinc-900 rounded-lg transition-all">
                       {sub.label}
                     </Link>
                   ))}
@@ -116,93 +77,50 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* BOTÓN PUBLICAR */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/dashboard/propietario"
-            className={`text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200 ${
-              scrolled
-                ? 'text-gray-600 hover:text-[#0056B3]'
-                : 'text-white/80 hover:text-white'
-            }`}
-          >
+        {/* ACCIONES DE LA ESQUINA DERECHA ALINEADAS */}
+        <div className="hidden lg:flex items-center gap-5 shrink-0">
+          <Link href="/dashboard" className="text-xs font-medium text-white/80 hover:text-white transition-colors py-1 relative group">
             Mi panel
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
           </Link>
-          <Link
-            href="/postulacion"
-            className="bg-[#FF2A39] hover:bg-[#0056B3] text-white text-sm font-bold px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-red-500/25 hover:shadow-blue-500/25 hover:scale-105"
-          >
+          
+          <Link href="/publicar" className="text-[10px] font-semibold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white rounded-full transition-all duration-300 shadow-sm px-4 py-2.5">
             Publicar propiedad
           </Link>
-        </div>
 
-        {/* HAMBURGER MOBILE */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden flex flex-col gap-1.5 p-2 rounded-xl"
-          aria-label="Menú"
-        >
-          <span className={`block h-0.5 rounded-full transition-all duration-300 ${
-            menuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'
-          } ${scrolled ? 'bg-gray-700' : 'bg-white'}`} />
-          <span className={`block h-0.5 rounded-full transition-all duration-300 ${
-            menuOpen ? 'opacity-0 w-0' : 'w-4'
-          } ${scrolled ? 'bg-gray-700' : 'bg-white'}`} />
-          <span className={`block h-0.5 rounded-full transition-all duration-300 ${
-            menuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-6'
-          } ${scrolled ? 'bg-gray-700' : 'bg-white'}`} />
-        </button>
-      </div>
+          {/* ICONO OJO ILUSTRADOR INTEGRADO EN LA ESQUINA SUPERIOR DERECHA */}
+          <div className="relative inline-block text-left border-l border-white/20 pl-4 ml-1">
+            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="px-3 py-1.5 bg-white/10 border border-white/20 text-[10px] font-mono tracking-wider text-white rounded-full hover:border-amber-500/50 hover:bg-white/20 transition-all duration-300 flex items-center gap-1.5 shadow-md group">
+              <svg className="w-3.5 h-3.5 text-amber-500 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.644M12 4.873c4.917 0 9.47 2.518 11.963 6.754a1.008 1.008 0 010 .644c-2.493 4.236-7.046 6.754-11.963 6.754a11.954 11.954 0 01-11.963-6.754 10.054 10.054 0 010-.644z" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" className="text-amber-500/20" />
+              </svg>
+              <span className="uppercase font-bold tracking-widest text-zinc-100">{activoActual.nombre}</span>
+            </button>
 
-      {/* MENÚ MOBILE */}
-      {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl animate-fade-in">
-          <div className="max-w-7xl mx-auto px-6 py-4 space-y-1">
-            {MENU_ITEMS.map((item) => (
-              <div key={item.label}>
-                <Link
-                  href={item.href}
-                  className="block px-4 py-3 text-gray-700 font-semibold rounded-xl hover:bg-blue-50 hover:text-[#0056B3] transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-                {item.submenu && (
-                  <div className="ml-4 space-y-1 mb-2">
-                    {item.submenu.map((sub) => (
-                      <Link
-                        key={sub.label}
-                        href={sub.href}
-                        className="flex items-center gap-2 px-4 py-2 text-sm text-gray-500 hover:text-[#0056B3] rounded-xl hover:bg-blue-50 transition-colors"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        <span className="w-1 h-1 rounded-full bg-[#FF2A39]" />
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+            {/* Menú que filtra (OCULTA) de forma automática el predeterminado activo */}
+            {dropdownOpen && (
+              <div className="absolute right-0 top-full mt-2 w-44 bg-zinc-950 border border-zinc-800 rounded-xl p-1 shadow-2xl z-50 flex flex-col gap-0.5 animate-in fade-in duration-150">
+                {DISPOSITIVOS.filter(disp => disp.id !== activoActual.id).map((disp) => (
+                  <button key={disp.id} onClick={() => { cambiarDimensiones(disp.w, disp.h, disp.desc); setDropdownOpen(false); }} className="w-full text-left px-3 py-2 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900 rounded-lg transition-all font-normal">
+                    {disp.desc}
+                  </button>
+                ))}
               </div>
-            ))}
-            <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
-              <Link
-                href="/dashboard/propietario"
-                className="block px-4 py-3 text-center text-gray-600 font-semibold rounded-xl border border-gray-200 hover:border-[#0056B3] hover:text-[#0056B3] transition-all"
-                onClick={() => setMenuOpen(false)}
-              >
-                Mi panel
-              </Link>
-              <Link
-                href="/postulacion"
-                className="block px-4 py-3 text-center bg-[#FF2A39] text-white font-bold rounded-xl hover:bg-[#0056B3] transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                Publicar propiedad
-              </Link>
-            </div>
+            )}
           </div>
         </div>
-      )}
+
+        {/* BURGER MÓVIL */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-white p-2 relative z-50">
+          <div className="w-5 h-3.5 flex flex-col justify-between">
+            <span className="w-full h-[1.5px] bg-current" />
+            <span className="w-full h-[1.5px] bg-current" />
+            <span className="w-full h-[1.5px] bg-current" />
+          </div>
+        </button>
+
+      </div>
     </nav>
-  )
+  );
 }
