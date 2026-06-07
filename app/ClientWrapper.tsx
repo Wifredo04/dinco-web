@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React from 'react';
 import { useLayout } from '@/context/layoutcontext';
 
@@ -8,7 +8,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
     <div className="w-full min-h-screen bg-white flex flex-col items-center justify-start overflow-x-hidden transition-all duration-500">
       {modoSimulador && (
         <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-zinc-950 font-mono text-xs px-4 py-1.5 rounded-full font-medium shadow-lg animate-bounce">
-          Auditoría de Interfaz: {dimensiones.nombre}
+          Auditor�a de Interfaz: {dimensiones.nombre}
         </div>
       )}
       <div style={{ width: dimensiones.width, height: modoSimulador ? dimensiones.height : 'auto', maxHeight: modoSimulador ? '85vh' : 'none' }} className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] relative flex flex-col flex-grow ${modoSimulador ? 'mt-28 rounded-2xl border-4 border-zinc-200 shadow-xl overflow-y-auto bg-white h-full' : 'w-full min-h-screen'}`}>

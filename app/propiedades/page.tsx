@@ -1,22 +1,22 @@
-﻿'use client';
+'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function PropiedadesPage() {
-  // 🟢 BASE DE DATOS MODULAR: Vinculada a tus rutas institucionales reales con imágenes comerciales de alta resolución
+  // ?? BASE DE DATOS MODULAR: Vinculada a tus rutas institucionales reales con im�genes comerciales de alta resoluci�n
   const catalogo = [
-    { id: 1, titulo: "Villa frente al mar", region: "Puerto Plata", href: "/puerto-plata", precio: "US$ 285,000", tag: "Venta", info: "4 hab. • 3 baños • 320 m²", img: "https://unsplash.com" },
-    { id: 2, titulo: "Apartamento beachfront", region: "Cabarete", href: "/cabarete", precio: "US$ 145,000", tag: "Venta", info: "2 hab. • 2 baños • 95 m²", img: "https://unsplash.com" },
-    { id: 3, titulo: "Villa de lujo con piscina", region: "Sosúa", href: "/sosua", precio: "US$ 420,000", tag: "Venta", info: "5 hab. • 4 baños • 480 m²", img: "https://unsplash.com" },
-    { id: 4, titulo: "Penthouse Ejecutivo", region: "Santo Domingo", href: "/santo-domingo", precio: "US$ 3,500 / mes", tag: "Renta", info: "3 hab. • 2 baños • 210 m²", img: "https://unsplash.com" },
-    { id: 5, titulo: "Casa colonial restaurada", region: "Santo Domingo", href: "/santo-domingo", precio: "US$ 550,000", tag: "Venta", info: "3 hab. • 3.5 baños • 290 m²", img: "https://unsplash.com" },
-    { id: 6, titulo: "Terreno frente al mar", region: "Samaná", href: "/samana", precio: "US$ 890,000", tag: "Venta", info: "Lote de 2,400 m² • Listo para construir", img: "https://unsplash.com" }
+    { id: 1, titulo: "Villa frente al mar", region: "Puerto Plata", href: "/puerto-plata", precio: "US$ 285,000", tag: "Venta", info: "4 hab. � 3 ba�os � 320 m�", img: "https://unsplash.com" },
+    { id: 2, titulo: "Apartamento beachfront", region: "Cabarete", href: "/cabarete", precio: "US$ 145,000", tag: "Venta", info: "2 hab. � 2 ba�os � 95 m�", img: "https://unsplash.com" },
+    { id: 3, titulo: "Villa de lujo con piscina", region: "Sos�a", href: "/sosua", precio: "US$ 420,000", tag: "Venta", info: "5 hab. � 4 ba�os � 480 m�", img: "https://unsplash.com" },
+    { id: 4, titulo: "Penthouse Ejecutivo", region: "Santo Domingo", href: "/santo-domingo", precio: "US$ 3,500 / mes", tag: "Renta", info: "3 hab. � 2 ba�os � 210 m�", img: "https://unsplash.com" },
+    { id: 5, titulo: "Casa colonial restaurada", region: "Santo Domingo", href: "/santo-domingo", precio: "US$ 550,000", tag: "Venta", info: "3 hab. � 3.5 ba�os � 290 m�", img: "https://unsplash.com" },
+    { id: 6, titulo: "Terreno frente al mar", region: "Saman�", href: "/samana", precio: "US$ 890,000", tag: "Venta", info: "Lote de 2,400 m� � Listo para construir", img: "https://unsplash.com" }
   ];
 
   return (
     <div className="pt-32 pb-24 bg-white min-h-screen text-zinc-900 px-6 max-w-7xl mx-auto transition-colors duration-500">
       
-      {/* 🟢 REDISEÑO DE FILTROS: Eliminamos la barra azul rígida por una consola de lujo integrada en negro asfalto */}
+      {/* ?? REDISE�O DE FILTROS: Eliminamos la barra azul r�gida por una consola de lujo integrada en negro asfalto */}
       <div className="mb-12 bg-zinc-950 p-5 rounded-2xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-zinc-900 shadow-2xl">
         <div className="flex flex-wrap gap-4 items-center w-full sm:w-auto">
           <select className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs rounded-xl px-4 py-3 outline-none focus:border-amber-500 transition-colors cursor-pointer w-full sm:w-48">
@@ -26,9 +26,9 @@ export default function PropiedadesPage() {
           </select>
           <select className="bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs rounded-xl px-4 py-3 outline-none focus:border-amber-500 transition-colors cursor-pointer w-full sm:w-48">
             <option>Todas las regiones</option>
-            <option>Samaná</option>
+            <option>Saman�</option>
             <option>Santo Domingo</option>
-            <option>Sosúa</option>
+            <option>Sos�a</option>
             <option>Puerto Plata</option>
           </select>
         </div>
@@ -42,14 +42,14 @@ export default function PropiedadesPage() {
         <div className="flex items-center gap-2">
           <span className="text-xs text-zinc-400 font-normal">Ordenar por:</span>
           <select className="bg-transparent text-xs text-zinc-700 font-medium outline-none cursor-pointer">
-            <option>Más recientes</option>
+            <option>M�s recientes</option>
             <option>Precio: menor a mayor</option>
             <option>Precio: mayor a menor</option>
           </select>
         </div>
       </div>
 
-      {/* 🟢 ENMARCACIÓN ARQUITECTÓNICA TRIDIMENSIONAL EN GRILLA RESPONSIVE COMPLETA */}
+      {/* ?? ENMARCACI�N ARQUITECT�NICA TRIDIMENSIONAL EN GRILLA RESPONSIVE COMPLETA */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {catalogo.map((prop) => (
           <div 
@@ -58,7 +58,7 @@ export default function PropiedadesPage() {
           >
             <div className="w-full h-full bg-white rounded-[14px] overflow-hidden flex flex-col justify-between">
               
-              {/* Contenedor de Imagen Comercial Conectado a Galería */}
+              {/* Contenedor de Imagen Comercial Conectado a Galer�a */}
               <Link href={prop.href} className="block relative h-56 bg-zinc-900 overflow-hidden border-b-2 border-zinc-950">
                 <img 
                   src={prop.img} 
@@ -72,7 +72,7 @@ export default function PropiedadesPage() {
               {/* Ficha Descriptiva Interna */}
               <div className="p-5 flex flex-col justify-between min-h-[165px] bg-white">
                 <div>
-                  <span className="text-zinc-500 text-xs font-semibold">📍 {prop.region}</span>
+                  <span className="text-zinc-500 text-xs font-semibold">?? {prop.region}</span>
                   <Link href={prop.href} className="block mt-2">
                     <h3 className="text-base font-normal tracking-wide text-zinc-900 hover:text-amber-600 transition-colors duration-300">
                       {prop.titulo}
@@ -81,10 +81,10 @@ export default function PropiedadesPage() {
                   <p className="text-xs text-zinc-400 mt-1 font-light tracking-wide">{prop.info}</p>
                 </div>
 
-                {/* Pie de Ficha con Botón de Expansión Líquida */}
+                {/* Pie de Ficha con Bot�n de Expansi�n L�quida */}
                 <div className="flex justify-between items-center mt-4 pt-4 border-t border-zinc-100">
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">Inversión</span>
+                    <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">Inversi�n</span>
                     <span className="text-base font-bold text-zinc-950 font-mono tracking-tight">{prop.precio}</span>
                   </div>
 
@@ -93,7 +93,7 @@ export default function PropiedadesPage() {
                     className="w-9 h-9 rounded-full bg-zinc-950 text-white flex items-center justify-center transition-all duration-500 ease-out group-hover:w-26 group-hover:bg-amber-500 group-hover:text-zinc-950 relative overflow-hidden"
                   >
                     <span className="absolute left-3.5 text-[10px] font-bold tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap">EXPLORAR</span>
-                    <span className="font-mono text-sm transition-transform duration-500 group-hover:translate-x-8">→</span>
+                    <span className="font-mono text-sm transition-transform duration-500 group-hover:translate-x-8">?</span>
                   </Link>
                 </div>
               </div>

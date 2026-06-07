@@ -1,117 +1,118 @@
-﻿'use client';
-import { useRef } from 'react';
-import Link from 'next/link';
+import Link from 'next/link'
+
+const regiones = [
+  {
+    nombre: 'Puerto Plata',
+    descripcion: 'Villas, casas y locales frente al mar Caribe',
+    imagen: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    propiedades: 124,
+    slug: 'puerto-plata',
+  },
+  {
+    nombre: 'Cabarete',
+    descripcion: 'Apartamentos y villas en la capital del surf',
+    imagen: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+    propiedades: 86,
+    slug: 'cabarete',
+  },
+  {
+    nombre: 'Sosúa',
+    descripcion: 'Residencias de lujo y propiedades comerciales',
+    imagen: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&q=80',
+    propiedades: 98,
+    slug: 'sosua',
+  },
+  {
+    nombre: 'Santo Domingo',
+    descripcion: 'Inversión y negocios en la capital del país',
+    imagen: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',
+    propiedades: 215,
+    slug: 'santo-domingo',
+  },
+  {
+    nombre: 'Samaná',
+    descripcion: 'Naturaleza tropical y exclusividad costera',
+    imagen: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
+    propiedades: 67,
+    slug: 'samana',
+  },
+  {
+    nombre: 'Monte Cristi',
+    descripcion: 'Oportunidades únicas en el norte del país',
+    imagen: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80',
+    propiedades: 43,
+    slug: 'monte-cristi',
+  },
+]
 
 export default function SeccionRegiones() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  const propiedades = [
-    { id: 1, titulo: "Villa Coral Luxury", region: "Samaná", href: "/samana", precio: "US$ 285,000", tags: ["Venta", "Premium"], info: "4 hab. • 3 baños • 320 m²", img: "https://unsplash.com" },
-    { id: 2, titulo: "Apartamento Vista Alta", region: "Samaná", href: "/samana", precio: "US$ 145,000", tags: ["Venta"], info: "2 hab. • 2 baños • 95 m²", img: "https://unsplash.com" },
-    { id: 3, titulo: "Penthouse Corporativo", region: "Santo Domingo", href: "/santo-domingo", precio: "US$ 3,500 / mes", tags: ["Renta", "Premium"], info: "3 hab. • 2 baños • 210 m²", img: "https://unsplash.com" },
-    { id: 4, titulo: "Villa Ocean Residence", region: "Sosúa", href: "/sosua", precio: "US$ 420,000", tags: ["Venta", "Destacada"], info: "5 hab. • 4 baños • 480 m²", img: "https://unsplash.com" }
-  ];
-
   return (
-    <section className="py-24 bg-white text-zinc-900 select-none overflow-hidden w-full transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* ENCABEZADO CON DISEÑO EDITORIAL */}
-        <div className="flex justify-between items-end mb-16">
-          <div>
-            <span className="text-amber-600 font-mono text-xs uppercase tracking-[0.2em] block mb-2 font-semibold">Portafolio Global</span>
-            <h2 className="text-3xl md:text-5xl font-extralight tracking-tight text-zinc-950">Propiedades Destacadas</h2>
-          </div>
-          
-          {/* Controles de deslizamiento cinemático */}
-          <div className="hidden md:flex items-center gap-4">
-            <button onClick={() => sliderRef.current?.scrollBy({ left: -370, behavior: 'smooth' })} className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-zinc-950 hover:border-zinc-950 transition-all duration-500 ease-out text-lg">
-              ←
-            </button>
-            <button onClick={() => sliderRef.current?.scrollBy({ left: 370, behavior: 'smooth' })} className="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-zinc-950 hover:border-zinc-950 transition-all duration-500 ease-out text-lg">
-              →
-            </button>
-          </div>
+    <section className="py-20 px-6 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+
+        {/* ENCABEZADO */}
+        <div className="text-center mb-14">
+          <span className="text-[#FF2A39] text-sm font-bold tracking-widest uppercase">
+            República Dominicana
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-[#0056B3] mt-2 mb-4">
+            Explora por región
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            Encuentra la propiedad perfecta en las mejores zonas del país
+          </p>
         </div>
 
-        {/* SLIDER DE ALTA DISPONIBILIDAD */}
-        <div 
-          ref={sliderRef}
-          className="flex flex-row gap-8 overflow-x-auto pb-8 snap-x snap-mandatory scroll-smooth scrollbar-none"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {propiedades.map((prop) => (
-            <div 
-              key={prop.id}
-              className="w-[310px] sm:w-[365px] shrink-0 snap-start relative bg-zinc-950 rounded-2xl p-[2px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+        {/* GRID DE REGIONES */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {regiones.map((region) => (
+            <Link
+              key={region.slug}
+              href={`/${region.slug}`}
+              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
             >
-              {/* CONTENEDOR INTERNO BLANCO ENMARCADO */}
-              <div className="w-full h-full bg-white rounded-[14px] overflow-hidden flex flex-col justify-between">
-                
-                {/* ZONA DE REVELADO CINEMÁTICO (IMAGEN) */}
-                <div className="relative h-56 w-full overflow-hidden bg-zinc-100 border-b border-zinc-100">
-                  <img 
-                    src={prop.img} 
-                    alt={prop.titulo}
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  />
-                  {/* Overlay gradiente oscuro sutil inferior en la foto */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                  
-                  {/* Badges Flotantes Minimalistas */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                    {prop.tags.map(t => (
-                      <span key={t} className={`text-[9px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-md shadow-sm ${
-                        t === 'Premium' || t === 'Destacada' ? 'bg-zinc-950 text-white' : 'bg-amber-500 text-zinc-950'
-                      }`}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* IMAGEN */}
+              <div
+                className="h-64 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style={{ backgroundImage: `url(${region.imagen})` }}
+              />
 
-                {/* FICHA TÉCNICA Y CONTENIDO DESCRIPTIVO */}
-                <div className="p-6 flex flex-col justify-between min-h-[170px] relative bg-white z-10">
+              {/* CAPA OSCURA */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* CONTENIDO */}
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-end justify-between">
                   <div>
-                    <span className="text-amber-600 font-mono text-[10px] uppercase tracking-wider font-semibold">
-                      📍 {prop.region}
-                    </span>
-                    <Link href={prop.href} className="block mt-2">
-                      <h3 className="text-base font-normal tracking-wide text-zinc-900 group-hover:text-amber-600 transition-colors duration-300">
-                        {prop.titulo}
-                      </h3>
-                    </Link>
-                    <p className="text-xs text-zinc-400 mt-1 font-light tracking-wide">{prop.info}</p>
+                    <h3 className="text-white text-2xl font-black mb-1">
+                      {region.nombre}
+                    </h3>
+                    <p className="text-white/70 text-sm">
+                      {region.descripcion}
+                    </p>
                   </div>
-
-                  {/* PIE DE LA CARD CON LLAMADA A LA ACCIÓN INTERACTIVA */}
-                  <div className="flex justify-between items-center mt-5 pt-4 border-t border-zinc-100">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">Inversión</span>
-                      <span className="text-base font-bold text-zinc-950 font-mono tracking-tight">{prop.precio}</span>
-                    </div>
-
-                    {/* Botón de expansión líquida con redirección dinámica */}
-                    <Link 
-                      href={prop.href} 
-                      className="w-10 h-10 rounded-full bg-zinc-950 text-white flex items-center justify-center transition-all duration-500 ease-out group-hover:w-28 group-hover:bg-amber-500 group-hover:text-zinc-950 relative overflow-hidden"
-                    >
-                      <span className="absolute left-4 text-xs font-bold tracking-wider opacity-0 transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap">
-                        EXPLORAR
-                      </span>
-                      <span className="font-mono text-sm transition-transform duration-500 group-hover:translate-x-9">
-                        →
-                      </span>
-                    </Link>
+                  <div className="text-right ml-4">
+                    <p className="text-[#FF2A39] text-2xl font-black">
+                      {region.propiedades}
+                    </p>
+                    <p className="text-white/60 text-xs uppercase tracking-wider">
+                      propiedades
+                    </p>
                   </div>
                 </div>
 
+                {/* BOTÓN */}
+                <div className="mt-4 flex items-center gap-2 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span>Ver propiedades</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
-
       </div>
     </section>
-  );
+  )
 }

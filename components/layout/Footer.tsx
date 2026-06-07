@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
@@ -31,7 +30,7 @@ export default function Footer() {
 
           {/* LOGO Y DESCRIPCIÓN */}
           <div className="lg:col-span-1">
-            <Image src="/nuevo_dc.svg" alt="DINCO" width={128} height={40} className="w-32 mb-4 brightness-0 invert" />
+            <img src="/nuevo_dc.svg" alt="DINCO" className="w-32 mb-4 brightness-0 invert" />
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Inmobiliaria y Constructora con más de 12 años conectando personas con propiedades de ensueño en República Dominicana y el mundo.
             </p>
@@ -59,13 +58,11 @@ export default function Footer() {
           <div>
             <h4 className="font-black text-lg mb-6">Propiedades</h4>
             <ul className="space-y-3">
-              {['Venta', 'Renta', 'Promoción', 'Proyectos nuevos', 'Propiedades destacadas', 'Blog', 'Internacional'].map((item) => (
+              {['Venta', 'Renta', 'Promoción', 'Proyectos nuevos', 'Propiedades destacadas', 'Internacional'].map((item) => (
                 <li key={item}>
-                  {['Términos y condiciones', 'Política de privacidad', 'Cookies', 'Login', 'Registro'].map((item) => (
-                  <Link key={item} href={item === 'Login' ? '/login' : item === 'Registro' ? '/registro' : '#'} className="text-white/40 hover:text-white text-xs transition-colors duration-200">
-                  {item}
-                 </Link> ))} 
-                  
+                  <Link href="#" className="text-white/60 hover:text-[#FF2A39] text-sm transition-colors duration-200">
+                    {item}
+                  </Link>
                 </li>
               ))}
             </ul>
