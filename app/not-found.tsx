@@ -2,29 +2,35 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#0056B3] flex items-center justify-center px-6">
-      <div className="text-center max-w-lg">
+    <div className="flex min-h-screen items-center justify-center bg-[#0056B3] px-6">
+      <div className="max-w-lg text-center">
         <div
-          className="w-full h-64 bg-cover bg-center rounded-3xl mb-8 opacity-20"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80)' }}
+          className="mb-8 h-64 w-full rounded-3xl bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              'url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80)',
+          }}
         />
-        <p className="text-[#FF2A39] font-black text-sm tracking-widest uppercase mb-2">Error 404</p>
-        <h1 className="text-5xl font-black text-white mb-4">
+        <p className="mb-2 text-sm font-black tracking-widest text-[#FF2A39] uppercase">
+          Error 404
+        </p>
+        <h1 className="mb-4 text-5xl font-black text-white">
           Página no encontrada
         </h1>
-        <p className="text-white/70 text-lg mb-8">
-          La página que buscas no existe o fue movida. Pero tenemos más de 600 propiedades esperándote.
+        <p className="mb-8 text-lg text-white/70">
+          La página que buscas no existe o fue movida. Pero tenemos más de 600
+          propiedades esperándote.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="bg-white text-[#0056B3] font-black px-8 py-4 rounded-xl hover:bg-[#FF2A39] hover:text-white transition-all duration-300"
+            className="rounded-xl bg-white px-8 py-4 font-black text-[#0056B3] transition-all duration-300 hover:bg-[#FF2A39] hover:text-white"
           >
             Ir al inicio
           </Link>
           <Link
             href="/propiedades"
-            className="bg-transparent border-2 border-white text-white font-black px-8 py-4 rounded-xl hover:bg-white hover:text-[#0056B3] transition-all duration-300"
+            className="rounded-xl border-2 border-white bg-transparent px-8 py-4 font-black text-white transition-all duration-300 hover:bg-white hover:text-[#0056B3]"
           >
             Ver propiedades
           </Link>

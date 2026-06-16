@@ -14,7 +14,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* --- IMPORTACIÓN DE TAILWIND --- */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ============================================
    PALETA OFICIAL DE COLORES DINCO
@@ -22,44 +22,44 @@
    en todo el sitio simultáneamente
    ============================================ */
 :root {
-  /* Color base del fondo — Negro absoluto */
-  --dinco-negro: #000000;
+  /* Color base del fondo — arena */
+  --dinco-negro: #fffbd6;
 
-  /* Azul oscuro profundo — fondos de secciones y tarjetas */
-  --dinco-azul-oscuro: #0B1A30;
+  /* oliva profundo — fondos de secciones y tarjetas */
+  --dinco-azul-oscuro: #75b23b;
 
   /* Azul corporativo — botones principales y enlaces */
-  --dinco-azul: #0056B3;
+  --dinco-azul: #6d5b47;
 
   /* Cyan eléctrico — acentos, bordes activos y detalles */
-  --dinco-cyan: #00D2FF;
+  --dinco-cyan: #fffbd6;
 
   /* Naranja coral — etiquetas, estados y llamadas a la acción secundarias */
-  --dinco-naranja: #FF8A00;
+  --dinco-naranja: #ff8a00;
 
   /* Bronce claro — degradados decorativos e íconos */
-  --dinco-bronce: #E5A96F;
+  --dinco-bronce: #e5a96f;
 
   /* Blanco puro — texto principal sobre fondos oscuros */
-  --dinco-blanco: #FFFFFF;
+  --dinco-blanco: #000000;
 
   /* Grises para texto secundario */
-  --dinco-gris-claro: #A0A8B8;
-  --dinco-gris-medio: #4A5568;
-  --dinco-gris-oscuro: #1A2030;
+  --dinco-gris-claro: #a0a8b8;
+  --dinco-gris-medio: #4a5568;
+  --dinco-gris-oscuro: #1a2030;
 
   /* ============================================
      MODO OSCURO (predeterminado)
      Fondo negro, texto blanco
      ============================================ */
   --fondo-principal: #000000;
-  --fondo-secundario: #0B1A30;
+  --fondo-secundario: #0b1a30;
   --fondo-tarjeta: #0d1f38;
-  --texto-principal: #FFFFFF;
-  --texto-secundario: #A0A8B8;
-  --texto-muted: #4A5568;
+  --texto-principal: #000000;
+  --texto-secundario: #a0a8b8;
+  --texto-muted: #4a5568;
   --borde-sutil: #1a2540;
-  --borde-activo: #00D2FF;
+  --borde-activo: #00d2ff;
 }
 
 /* ============================================
@@ -69,15 +69,15 @@
    Para editar colores del modo claro
    modifica los valores aquí abajo
    ============================================ */
-[data-modo="claro"] {
-  --fondo-principal: #F8F9FC;
-  --fondo-secundario: #EEF2F8;
-  --fondo-tarjeta: #FFFFFF;
-  --texto-principal: #0B1A30;
-  --texto-secundario: #4A5568;
-  --texto-muted: #9AA5B4;
-  --borde-sutil: #E2E8F0;
-  --borde-activo: #0056B3;
+[data-modo='claro'] {
+  --fondo-principal: #f8f9fc;
+  --fondo-secundario: #eef2f8;
+  --fondo-tarjeta: #ffffff;
+  --texto-principal: #0b1a30;
+  --texto-secundario: #4a5568;
+  --texto-muted: #9aa5b4;
+  --borde-sutil: #e2e8f0;
+  --borde-activo: #0056b3;
 }
 
 /* ============================================
@@ -89,7 +89,9 @@
    ============================================ */
 
 /* Reset base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -99,7 +101,7 @@ html {
   /* Scroll suave para toda la página */
   scroll-behavior: smooth;
   /* Tamaño base: 16px */
-  font-size: 16px;
+  font-size: 17px;
 }
 
 body {
@@ -118,7 +120,9 @@ body {
   line-height: 1.6;
 
   /* Transición suave al cambiar de modo claro/oscuro */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* ============================================
@@ -133,7 +137,7 @@ body {
   font-family: 'Cardo', Georgia, serif;
   font-size: clamp(3rem, 8vw, 7rem); /* Mínimo 48px, máximo 112px */
   font-weight: 700;
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.02em;
 }
 
@@ -284,7 +288,10 @@ body {
   border: 1px solid var(--borde-sutil);
   border-radius: 4px;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .tarjeta:hover {
   transform: translateY(-4px);
@@ -420,13 +427,22 @@ body {
 }
 
 @keyframes fadeEntrar {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulsarBrillo {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .animar-arriba {
@@ -440,11 +456,26 @@ body {
 }
 
 /* Delays para animaciones en secuencia */
-.retraso-1 { animation-delay: 0.1s; opacity: 0; }
-.retraso-2 { animation-delay: 0.2s; opacity: 0; }
-.retraso-3 { animation-delay: 0.3s; opacity: 0; }
-.retraso-4 { animation-delay: 0.4s; opacity: 0; }
-.retraso-5 { animation-delay: 0.5s; opacity: 0; }
+.retraso-1 {
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+.retraso-2 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+.retraso-3 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+.retraso-4 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+.retraso-5 {
+  animation-delay: 0.5s;
+  opacity: 0;
+}
 
 /* ============================================
    UTILIDADES GENERALES
@@ -494,11 +525,7 @@ body {
 .overlay-lateral {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.7) 0%,
-    transparent 60%
-  );
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
 }
 
 /* ============================================
@@ -544,7 +571,9 @@ body {
   font-size: 0.9375rem;
   color: var(--texto-principal);
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .campo-input::placeholder {
   color: var(--texto-muted);
